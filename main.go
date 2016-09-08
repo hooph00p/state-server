@@ -38,7 +38,7 @@ func (app *Application) Run() {
 		longitude, err := strconv.ParseFloat(c.PostForm("longitude"), 64)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
-				"message": fmt.Errorf("Longitude Error: Argument Invalid"),
+				"message": "Longitude Error: Argument Invalid",
 			})
 			return
 		}
@@ -46,7 +46,7 @@ func (app *Application) Run() {
 		latitude, err := strconv.ParseFloat(c.PostForm("latitude"), 64)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
-				"message": fmt.Errorf("Latitude Error: Argument Invalid"),
+				"message": "Latitude Error: Argument Invalid",			
 			})
 			return
 		}
