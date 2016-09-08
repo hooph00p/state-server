@@ -20,7 +20,7 @@ or call
 go get github.com/hooph00p/state-server
 ```
 
-2. Make **$GOPATH/src/github.com/hooph00p/state-server** your home directory and call
+2. Make **$GOPATH/src/github.com/hooph00p/state-server** your current directory and call
 
 ```
 make
