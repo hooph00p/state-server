@@ -35,7 +35,7 @@ func (app *Application) Run() {
 	g := gin.Default()
 	g.POST("/", func(c *gin.Context) {
 
-		longitude, err := strconv.ParseFloat(c.Query("longitude"), 64)
+		longitude, err := strconv.ParseFloat(c.PostForm("longitude"), 64)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"message": fmt.Errorf("Longitude Error: Argument Invalid"),
@@ -43,7 +43,7 @@ func (app *Application) Run() {
 			return
 		}
 
-		latitude, err := strconv.ParseFloat(c.Query("latitude"), 64)
+		latitude, err := strconv.ParseFloat(c.PostForm("latitude"), 64)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"message": fmt.Errorf("Latitude Error: Argument Invalid"),
