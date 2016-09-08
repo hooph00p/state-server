@@ -1,5 +1,14 @@
 # @hooph00p
 
+## Instructions
+
+### Requirements:
+- [Git](https://git-scm.com/downloads)
+- Latest version of [Go](https://golang.org/dl/)
+- A little bit of Go installation
+
+1. Clone this repository
+
 ## Plan
 
 - [x] Get JSON Loaded into memory
