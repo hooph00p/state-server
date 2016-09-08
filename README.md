@@ -8,11 +8,11 @@
 - Latest version of [Go](https://golang.org/dl/)
 - A little bit of Go installation
 
-  1. Clone this repository into **$GOPATH/src/github.com/hooph00p/state-server** or simply call **go get github.com/hooph00p/state-server**
+1. Clone this repository into **$GOPATH/src/github.com/hooph00p/state-server** or simply call **go get github.com/hooph00p/state-server**
 
-  2. Make **$GOPATH/src/github.com/hooph00p/state-server** your home directory and call **make**
+2. Make **$GOPATH/src/github.com/hooph00p/state-server** your home directory and call **make**
 
-  3. Run **./state-server**
+3. Run **./state-server**
 
 ## Plan
 
