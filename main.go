@@ -38,15 +38,17 @@ func (app *Application) Run() {
 		longitude, err := strconv.ParseFloat(c.Query("longitude"), 64)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
-				"message": fmt.Errorf("Longitude Error:", err),
+				"message": fmt.Errorf("Longitude Error: Argument Invalid"),
 			})
+			return
 		}
 
 		latitude, err := strconv.ParseFloat(c.Query("latitude"), 64)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
-				"message": fmt.Errorf("Latitude Error:", err),
+				"message": fmt.Errorf("Latitude Error: Argument Invalid"),
 			})
+			return
 		}
 
 		states, err := app.Map.Contains(latitude, longitude)
