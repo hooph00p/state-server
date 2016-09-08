@@ -5,6 +5,8 @@ import (
 	"testing"
 
 	"net/http"
+  	"net/url"
+
 
 	geo "github.com/kellydunn/golang-geo"
 )
@@ -82,7 +84,12 @@ func TestContainsOnStateLine(t *testing.T) {
 func TestPost200(t *testing.T) {
 	go runWebServer()
 
-	resp, _ := http.Post("http://localhost:8080/?longitude=-77.036133&latitude=40.513799", "application/json", nil)
+	longitude, latitude := "-77.036133", "40.513799"
+
+	resp, _ := http.PostForm("http://localhost:8080/", url.Values{
+		"longitude": {longitude},
+		"latitude":  {latitude},
+	})
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
@@ -105,7 +112,12 @@ func TestGet404(t *testing.T) {
 func TestPost202(t *testing.T) {
 	go runWebServer()
 
-	resp, _ := http.Post("http://localhost:8080/?longitude=-9999.99&latitude=-9999.99", "application/json", nil)
+	longitude, latitude := "-9999.99", "9999.99"
+
+	resp, _ := http.PostForm("http://localhost:8080/", url.Values{
+		"longitude": {longitude},
+		"latitude":  {latitude},
+	})
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusNoContent {
@@ -117,7 +129,11 @@ func TestPost202(t *testing.T) {
 func TestBadRequest(t *testing.T) {
 	go runWebServer()
 
-	resp, _ := http.Post("http://localhost:8080/?longitude='hey'", "application/json", nil)
+	longitude := "hey"
+
+	resp, _ := http.PostForm("http://localhost:8080/", url.Values{
+		"longitude": {longitude},
+	})
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusBadRequest {
