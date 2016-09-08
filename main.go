@@ -49,11 +49,11 @@ func (app *Application) Run() {
 			})
 		}
 
-		state, err := app.Map.Contains(latitude, longitude)
+		states, err := app.Map.Contains(latitude, longitude)
 		if err != nil {
 			c.Data(http.StatusNoContent, gin.MIMEHTML, nil)
 		} else {
-			c.JSON(http.StatusOK, []string{state.Name})
+			c.JSON(http.StatusOK, states)
 		}
 	})
 

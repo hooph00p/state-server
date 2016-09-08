@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"encoding/json"
 	"fmt"
 	"os"
 )
@@ -32,27 +31,17 @@ func (m *Map) LoadStates(path string) (err error) {
 }
 
 /**
- * Create a new State, then generate the geo.Polygon
- * for that state (so we can just call s.Bounds.Contains)
- */
-func newState(line string) *State {
-	state := State{}
-	json.Unmarshal([]byte(line), &state)
-	state.toPolygon()
-	return &state
-}
-
-/**
  * Using golang-geo, check to see if the map contains a point. If it does, return
  * the State.
  */
-func (m *Map) Contains(latitude, longitude float64) (s *State, err error) {
+func (m *Map) Contains(latitude, longitude float64) (states []string, err error) {
 	for i := range m.States {
 		if m.States[i].Contains(latitude, longitude) {
-			s = &m.States[i]
-			return
+			states = append(states, m.States[i].Name)
 		}
 	}
-	err = fmt.Errorf("Point not found.")
+	if len(states) == 0 {
+		err = fmt.Errorf("No State Found.")
+	}
 	return
 }

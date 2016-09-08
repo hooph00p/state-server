@@ -1,6 +1,10 @@
 package main
 
-import geo "github.com/kellydunn/golang-geo"
+import (
+	"encoding/json"
+
+	geo "github.com/kellydunn/golang-geo"
+)
 
 const (
 	LATITUDE  int = 1 // position in the 2D Array
@@ -14,7 +18,8 @@ type State struct {
 }
 
 /**
- * Create a new State, then generate the geo.Polygon
+ * Create a new State by unmarshalling into JSON,
+ * then generate the geo.Polygon
  * for that state (so we can just call s.Bounds.Contains)
  */
 func newState(line string) *State {
