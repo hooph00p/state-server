@@ -7,7 +7,7 @@
 - [x] Create REST Endpoint that accepts a POST request with a longitude and latitude argument
 - [x] Add Insomnia tests to make sure the endpoint works
 - [x] Migrates tests from Insomnia to main_test.go
-- [ ] Makefile for dependencies
+- [x] Makefile for dependencies
 
 ## Dependencies:
 
