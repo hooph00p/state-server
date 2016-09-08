@@ -18,14 +18,12 @@ type Map struct {
 func (m *Map) LoadStates(path string) (err error) {
 	file, err := os.Open(path)
 	defer file.Close()
-	if err != nil {
-		return
-	}
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		state := newState(scanner.Text())
-		m.States = append(m.States, *state)
+	if err == nil {
+		scanner := bufio.NewScanner(file)
+		for scanner.Scan() {
+			state := newState(scanner.Text())
+			m.States = append(m.States, *state)
+		}
 	}
 	return
 }
