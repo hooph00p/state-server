@@ -53,7 +53,7 @@ func (app *Application) Run() {
 
 		states, err := app.Map.Contains(latitude, longitude)
 		if err != nil {
-    			c.JSON(404, gin.H{"message": "Point not in a state."})
+    			c.JSON(http.StatusNotFound, gin.H{"message": "Point not in a state."})
 		} else {
 			c.JSON(http.StatusOK, states)
 		}
